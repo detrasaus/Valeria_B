@@ -125,3 +125,93 @@ article h3 {
   padding: 0.3rem 0.7rem;
   font-size: 0.9rem;
 }
+
+/* === РОЗОВАЯ ТЕМА С ОГОНЬКАМИ И КОТИКАМИ === */
+:root {
+  --pink-bg: #ffe6f0;
+  --pink-dark: #ffb3d1;
+  --pink-accent: #ff66a3;
+  --pink-text: #4a1942;
+  --glow: rgba(255, 105, 180, 0.7);
+}
+
+body {
+  background: linear-gradient(135deg, var(--pink-bg), #fff5f9);
+  color: var(--pink-text);
+  position: relative;
+}
+
+/* Мерцающие огоньки */
+.sparkle {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: var(--pink-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--glow), 0 0 16px var(--glow);
+  animation: twinkle 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+/* Летающие котики - стали БОЛЬШИМИ */
+.floating-cat {
+  position: fixed;
+  font-size: 4.5rem; /* Было 1.8rem, теперь огромные */
+  opacity: 0.8;
+  animation: floatCat 5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Падающие поросята - стали БОЛЬШИМИ */
+.falling-pig {
+  position: fixed;
+  top: -80px; /* Чуть выше старт */
+  font-size: 4rem; /* Было 1.6rem */
+  animation: fallDown linear forwards;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+@keyframes fallDown {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes floatCat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-25px) rotate(5deg); }
+}
+
+/* Оформление блоков под тему */
+section, article {
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid var(--pink-dark);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+h1, h2, h3 {
+  color: var(--pink-accent);
+  text-shadow: 0 0 6px rgba(255, 105, 180, 0.3);
+}
+
+a {
+  color: var(--pink-accent);
+  text-decoration: none;
+  transition: 0.2s;
+}
+a:hover {
+  text-shadow: 0 0 8px var(--glow);
+  transform: scale(1.02);
+}
